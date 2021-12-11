@@ -32,6 +32,7 @@ class InitPractica():
         pygame.display.flip()  # отображение последнего прорисованного экрана
 
 
+
 if __name__ == "__main__":
     game_pr = InitPractica()  # экземпляр игры
     game_pr.run_game()  # вызов метода
