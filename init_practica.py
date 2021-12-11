@@ -10,8 +10,8 @@ class InitPractica():
         """инициализирует угру и создает игровые ресурсы"""
         pygame.init()
         self.settings = Settings()
-
-        self.screen = pygame.display.set_mode((1200, 800))  # размер экрана
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height))  # атрибуты для создания экрана
         pygame.display.set_caption("Практика")  # верхня часть окна с названием
 
     def run_game(self):
@@ -27,6 +27,11 @@ class InitPractica():
 
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
-        self.screen.fill(self.settings.bg_color)  # при каждом проходе цикла переписывает экран
+        self.screen.fill(self.settings.bg_color)  # при кажд проходе цикла переписывает экран(для получения цвета фона)
 
         pygame.display.flip()  # отображение последнего прорисованного экрана
+
+
+if __name__ == "__main__":
+    game_pr = InitPractica()  # экземпляр игры
+    game_pr.run_game()  # вызов метода
