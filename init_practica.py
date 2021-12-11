@@ -20,17 +20,13 @@ class InitPractica():
             self._check_events()  # вызов вспомогательного _метода
             self._update_screen()  # вызов вспомогательного _метода
 
-
     def _check_events(self):
-        for event in pygame.event.get():  #  отслеживание событий клавиатуры и мыши
+        for event in pygame.event.get():  # отслеживание событий клавиатуры и мыши
             if event.type == pygame.QUIT:
                 sys.exit()
-
 
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
         self.screen.fill(self.settings.bg_color)  # при каждом проходе цикла переписывает экран
 
         pygame.display.flip()  # отображение последнего прорисованного экрана
-
-
