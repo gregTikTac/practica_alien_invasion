@@ -1,6 +1,7 @@
 import pygame
 import sys
 from settings import Settings
+from popugai import Popugai
 
 
 class InitPractica():
@@ -10,9 +11,10 @@ class InitPractica():
         """инициализирует угру и создает игровые ресурсы"""
         pygame.init()
         self.settings = Settings()
-        self.screen = pygame.display.set_mode(
-            (self.settings.screen_width, self.settings.screen_height))  # атрибуты для создания экрана
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  # атрибуты для создания экрана
+        self.screen = pygame.display.set_mode((800, 600))
         pygame.display.set_caption("Практика")  # верхня часть окна с названием
+        self.popugai = Popugai(self)  # создание экземпляра
 
     def run_game(self):
         """Запуск основного цикла игры"""
@@ -28,7 +30,7 @@ class InitPractica():
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
         self.screen.fill(self.settings.bg_color)  # при кажд проходе цикла переписывает экран(для получения цвета фона)
-
+        self.popugai.blitme()
         pygame.display.flip()  # отображение последнего прорисованного экрана
 
 
