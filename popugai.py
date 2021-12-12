@@ -1,7 +1,7 @@
 import pygame
 
 
-class Poougai():
+class Popugai():
     """класс для управления попугаем"""
 
     def __init__(self, popugai_game):
@@ -15,5 +15,6 @@ class Poougai():
         # каждый новый попугай появляется у нижнего края платформы
         self.rect.midbottom = self.screen_rect.midbottom
 
-
-
+    def blitme(self):  # метод, который выводит изображения на экран в прзиции self.rect
+        """Рисует попугая в текущей позиции"""
+        self.screen.blit(self.image, self.rect)
