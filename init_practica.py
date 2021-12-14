@@ -21,6 +21,7 @@ class InitPractica():
         while True:
             self._check_events()  # вызов вспомогательного _метода
             self._update_screen()  # вызов вспомогательного _метода
+            self.popugai.update() # вызов из клааса попугай для обновления позиции на экране
 
     def _check_events(self):
         for event in pygame.event.get():  # отслеживание событий клавиатуры и мыши
