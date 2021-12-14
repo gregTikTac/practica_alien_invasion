@@ -38,6 +38,8 @@ class InitPractica():
             self.popugai.moving_right = True  # начинается непрерывное движение
         elif event.key == pygame.K_LEFT:
             self.popugai.moving_left = True
+        elif event.key == pygame.K_q:  # клавиша q для выхода
+            sys.exit()
 
     def _check_keyup_events(self, event):
         """реагирует на отжатие клавиш"""
