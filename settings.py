@@ -7,3 +7,5 @@ class Settings():
         self.screen_width = 800
         self.screen_height = 600
         self.bg_color = (255, 255, 255)
+
+        self.popugai_speed = 1.5  # скорость перемещения попугая
