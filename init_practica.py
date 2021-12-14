@@ -28,7 +28,10 @@ class InitPractica():
                 sys.exit()
             elif event.type == pygame.KEYDOWN:  # при обнаружении события keydown проверяем нажата ли клавиша
                 if event.key == pygame.K_RIGHT:
-                    self.popugai.rect.x += 1  # переместить попугая на один пиксел
+                    self.popugai.moving_right = True # начинается непрерывное движение
+            elif event.type == pygame.KEYUP:  # если клавиша отжата
+                if event.key == pygame.K_RIGHT:
+                    self.popugai.moving_right = False  # движение прекращается
 
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
