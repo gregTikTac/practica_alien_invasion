@@ -24,9 +24,9 @@ class Popugai():
     def update(self):
         """Обновление позиции попугая"""
         if self.moving_right and self.rect.right < self.screen_rect.right:  # еслиЗнач<scr.rect,корабльНеДостигПравКрая
-            self.rect.x += self.settings.popugai_speed  # нов знач исп для атрибута rect.x управл позицией
+            self.x += self.settings.popugai_speed  # нов знач исп для атрибута rect.x управл позицией
         if self.moving_left and self.rect.left > 0:  # аналогично с левым краемы
-            self.rect.x -= self.settings.popugai_speed
+            self.x -= self.settings.popugai_speed
         self.rect.x = self.x  # бновление атрибута rect
 
     def blitme(self):  # метод, который выводит изображения на экран в прзиции self.rect
