@@ -16,11 +16,14 @@ class Popugai():
         self.rect.midbottom = self.screen_rect.midbottom
 
         self.moving_right = False  # флаг перемещения
+        self.moving_left = False  # -//-
 
     def update(self):
         """Обновление позиции попугая"""
         if self.moving_right:
             self.rect.x += 1
+        if self.moving_left:
+            self.rect.x -= 1
 
     def blitme(self):  # метод, который выводит изображения на экран в прзиции self.rect
         """Рисует попугая в текущей позиции"""
