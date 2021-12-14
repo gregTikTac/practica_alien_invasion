@@ -28,16 +28,24 @@ class InitPractica():
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:  # при обнаружении события keydown проверяем нажата ли клавиша
-                if event.key == pygame.K_RIGHT:
-                    self.popugai.moving_right = True # начинается непрерывное движение
-                elif event.key == pygame.K_LEFT:
-                    self.popugai.moving_left = True
+                self._check_keydown_events(event)
+            elif event.type == pygame.KEYUP:  # проверям отпущена ли клавиша
+                self._check_keyup_events(event)
 
-            elif event.type == pygame.KEYUP:  # если клавиша отжата
-                if event.key == pygame.K_RIGHT:
-                    self.popugai.moving_right = False  # движение прекращается
-                elif event.key == pygame.K_LEFT:
-                    self.popugai.moving_left = False
+    def _check_keydown_events(self, event):
+        """реагирует на нажатие клавиш"""
+        if event.key == pygame.K_RIGHT:
+            self.popugai.moving_right = True  # начинается непрерывное движение
+        elif event.key == pygame.K_LEFT:
+            self.popugai.moving_left = True
+
+    def _check_keyup_events(self, event):
+        """реагирует на отжатие клавиш"""
+        if event.key == pygame.K_RIGHT:
+            self.popugai.moving_right = False  # движение прекращается
+        elif event.key == pygame.K_LEFT:
+            self.popugai.moving_left = False
+
     def _update_screen(self):
         """Обновляет изображение на экране и отображает новый экран"""
         self.screen.fill(self.settings.bg_color)  # при кажд проходе цикла переписывает экран(для получения цвета фона)
