@@ -3,8 +3,7 @@ import pygame
 
 
 def check_events(rocket):
-    "" "Реакция на события клавиатуры и мыши" ""
-
+    """Реакция на события клавиатуры и мыши"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -32,7 +31,7 @@ def check_keyup_events(event, rocket):
         rocket.moving_left = False
     elif event.key == pygame.K_UP:
         rocket.moving_up = False
-    elif event.key == pygame.K_DOWN: \
+    elif event.key == pygame.K_DOWN:
         rocket.moving_down = False
 
 
