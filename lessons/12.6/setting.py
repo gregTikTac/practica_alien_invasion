@@ -4,3 +4,5 @@ class Settings():
         self.screen_height = 600
         self.color = (255, 255, 255)
 
+        self.ship_speed = 2
+

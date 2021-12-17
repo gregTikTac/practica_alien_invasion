@@ -1,26 +1,21 @@
 import pygame
-import sys
 from setting import Settings
+from ship import Ship
+import function as func
 
 
-class Game:
-    def __init__(self):
-        pygame.init()
-        self.settings = Settings()
+def run_game():
+    pygame.init()
+    ship_settings = Settings()
+    screen = pygame.display.set_mode((ship_settings.screen_width, ship_settings.screen_height))
+    pygame.display.set_caption("Боковая стрельба")
+    ship = Ship(ship_settings, screen)
 
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
-        pygame.display.set_caption("Боковая стрельба")
-
-    def run_game(self):
-        running = True
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-
-            pygame.display.flip()
+    running = True
+    while running:
+        func.check_events(ship)
+        ship.update()
+        func.update_screen(ship_settings, screen, ship)
 
 
-if __name__ == "__main__":
-    gr = Game()
-    gr.run_game()
+run_game()
