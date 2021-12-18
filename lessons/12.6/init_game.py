@@ -15,6 +15,7 @@ class InitGame:
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
+        self.screen_rect = self.screen.get_rect() # края экрана
 
     def run_game(self):
         running = True
@@ -22,6 +23,12 @@ class InitGame:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            # удаление снарядов
+            for bullet in self.bullets.copy():
+                if bullet.rect.right >= self.screen_rect.right: # если снаряд вышел за правый край
+                    self.bullets.remove(bullet) # то удаляем его
+            print(len(self.bullets))
+
             self._update_screen()
 
     def _check_events(self):
