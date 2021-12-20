@@ -13,7 +13,8 @@ class StarsOnTheScreen:
         pygame.display.set_caption("Star in the space")
 
         self.stars = pygame.sprite.Group()
-        self._create_stars()
+        self._create_many_stars()
+
 
     def run_game(self):
         running = True
@@ -26,21 +27,29 @@ class StarsOnTheScreen:
             if event.type == pygame.QUIT:
                 sys.exit()
 
-    def _create_stars(self):
+    def _create_many_stars(self):
         star = Star(self)
-        star_width = star.rect.width  # ширина звезды определяется оп атр rect
+        star_width, star_height = star.rect.size  # ширина звезды определяется оп атр rect
         availiable_space_x = self.settings.screen_width - (2 * star_width)  # доступное горизонтальное пространство
         number_stars_x = availiable_space_x // (2 * star_width)  # количество пришельцев
-        # создание первого ряда звезд
-        for star_number in range(number_stars_x):
-            star = Star(self)
-            star.x = star_width + 2 * star_width * star_number  # создание звезды и ее координаты
-            star.rect.x = star.x
-            self.stars.add(star)
+        # определяет количество рядов, помещающихся на экране
+        availiable_space_y = (self.settings.screen_height - (3 * star_height))  # чтобы знать сколько вместиться рядов
+        number_rows = availiable_space_y // (2 * star_height)  # количество рядов
+        for row_number in range(number_rows):
+            # создание первого ряда звезд
+            for star_number in range(number_stars_x):
+                self._create_star(star_number, row_number)
+
+    def _create_star(self, star_number, row_number):
+        star = Star(self)
+        star_width, star_height = star.rect.size  # создание звезды и ее координаты
+        star.x = star_width + 2 * star_width * star_number
+        star.rect.x = star.x
+        star.rect.y = star.rect.height + 2 * star.rect.height * row_number
+        self.stars.add(star)
 
     def _update_screen(self):
         self.screen.fill(self.settings.screen_color)
-
         self.stars.draw(self.screen)
 
         pygame.display.flip()
