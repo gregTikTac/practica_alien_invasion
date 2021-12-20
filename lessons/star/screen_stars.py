@@ -28,7 +28,15 @@ class StarsOnTheScreen:
 
     def _create_stars(self):
         star = Star(self)
-        self.stars.add(star)
+        star_width = star.rect.width  # ширина звезды определяется оп атр rect
+        availiable_space_x = self.settings.screen_width - (2 * star_width)  # доступное горизонтальное пространство
+        number_stars_x = availiable_space_x // (2 * star_width)  # количество пришельцев
+        # создание первого ряда звезд
+        for star_number in range(number_stars_x):
+            star = Star(self)
+            star.x = star_width + 2 * star_width * star_number  # создание звезды и ее координаты
+            star.rect.x = star.x
+            self.stars.add(star)
 
     def _update_screen(self):
         self.screen.fill(self.settings.screen_color)
