@@ -1,13 +1,20 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Star:
+
+class Star(Sprite):
     def __init__(self, star_game):
+        super().__init__()
         self.screen = star_game.screen
-        self.screen_rect = star_game.screen.get_rect()
-        self.settings = star_game.settings
 
         self.image = pygame.image.load("images/star.bmp")
-        self.image_rect = self.image.get_rect()
+        self.rect = self.image.get_rect()
 
-    def blitme(self):
-        self.screen.blit(self.image, self.screen_rect)
+        # появление звезды в левом верхем углу
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+
+        # сохранение точной горизонтальной позиции пришельца
+        self.x = float(self.rect.x)
+
+

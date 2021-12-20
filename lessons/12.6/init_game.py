@@ -2,7 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
-from  bullets import Bullets
+from bullets import Bullets
 
 
 class InitGame:
